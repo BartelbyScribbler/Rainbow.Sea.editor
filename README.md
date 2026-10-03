@@ -10,6 +10,12 @@ Enable **Edit flow paths** to drag the control points. The shared endpoints of j
 
 Pause and scrub the timeline to find a frame. Scrubbing rebuilds the regenerative ocean from its initial state, so restoring the same scene settings, dimensions, and time reproduces the same frame in the same browser. Scenes run for up to ten minutes; restart to begin again. Rebuilding later moments can take a few seconds.
 
+## Use your own ships
+
+Under **Ships**, use **Choose image** separately for Ship 1 and Ship 2. PNG, WebP, and JPEG are supported; transparent PNG or WebP images blend best with the sea. Flip an image horizontally if its bow points left, and adjust **Waterline from top** to set how much of the hull is submerged. A larger percentage shows more of the ship. **Use galleon** restores the original artwork for that ship.
+
+Images are processed in your browser, capped at 1024 pixels on the longest side, and stored with their transparency. Uploads can be up to 15 MB and 32 megapixels. Custom artwork is embedded in presets, JSON scene files, and standalone HTML exports; it is not uploaded to the repository or a server. If browser storage fills up, save the scene as a JSON file instead. Older scene files still load with the default galleons.
+
 ## Save and export
 
 - **Export image** downloads a PNG at the selected resolution.
