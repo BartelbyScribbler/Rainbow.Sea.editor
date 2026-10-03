@@ -279,10 +279,10 @@ function render(showGuides=true){
 }
 function advance(target){const step=Math.floor(target*30);while(simStep<step){simStep++;evolve(simStep/30)}}
 async function seek(target){
- if(seeking)return;seeking=true;playing=false;sync();report('Rebuilding this moment…');
+ if(seeking)return;seeking=true;playing=false;sync();document.querySelectorAll('button,input,select').forEach(el=>el.disabled=true);report('Rebuilding this moment…');
  seed();simStep=0;const goal=Math.floor(target*30);
  while(simStep<goal){const stop=Math.min(goal,simStep+30);while(simStep<stop){simStep++;evolve(simStep/30)}await new Promise(resolve=>requestAnimationFrame(resolve))}
- clock=target;render();seeking=false;report('Ready · Scene restored at '+clock.toFixed(1)+' seconds.')
+ clock=target;render();seeking=false;document.querySelectorAll('button,input,select').forEach(el=>el.disabled=false);sync();report('Ready · Scene restored at '+clock.toFixed(1)+' seconds.')
 }
 function frame(ms){const dt=previousMs?Math.min(.1,(ms-previousMs)/1000):0;previousMs=ms;if(!seeking){if(playing){clock=Math.min(600,clock+dt);if(clock===600){playing=false;sync()}advance(clock)}render()}requestAnimationFrame(frame)}
 for(const [key] of specs)$(key).addEventListener('input',()=>{settings[key]=Number($(key).value);$('out-'+key).value=key==='hue'?settings[key]+'°':settings[key].toFixed(2)+'×';if(key==='background'||key==='eddies'){}render()});
